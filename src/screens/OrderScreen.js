@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from "react";
-import { View,FlatList,StyleSheet,ScrollView} from "react-native";
+import { View,FlatList,StyleSheet,ScrollView,SafeAreaView} from "react-native";
 import {Appbar,Card,Text,Button} from "react-native-paper";
 import {DrawerActions} from "react-navigation";
 
@@ -65,6 +65,8 @@ class OrderScreen extends Component {
           <Appbar.Content title="Orders" />
           <Appbar.Action icon="shopping-cart" />
         </Appbar.Header>
+        <ScrollView>
+        <SafeAreaView>
         <FlatList
         contentContainerStyle={{paddingBottom:50}}
         showsVerticalScrollIndicator={false}
@@ -92,6 +94,8 @@ class OrderScreen extends Component {
               );
         }}
         />
+        </SafeAreaView>
+        </ScrollView>
       </View>
     );
   }

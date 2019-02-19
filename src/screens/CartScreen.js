@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from "react";
-import { View,StyleSheet,ScrollView,FlatList } from "react-native";
+import { View,StyleSheet,ScrollView,FlatList,SafeAreaView } from "react-native";
 import { Card,Appbar,Button,Text} from "react-native-paper";
 import {DrawerActions} from "react-navigation";
 // create a component
@@ -18,12 +18,15 @@ class CartScreen extends Component {
           <Appbar.Content title="Cart" />
           <Appbar.Action icon="shopping-cart" />
         </Appbar.Header>
+        <SafeAreaView>
         <ScrollView>
           <Card>
             <Card.Content style={styles.cardContainer}>
+              <Button>+</Button>
               <Text>1</Text>
               <Text>Large Pizza</Text>
               <Text>$8.5</Text>
+              <Button> - </Button>
             </Card.Content>
           </Card>
           <View style={styles.totalContainer}>
@@ -32,6 +35,7 @@ class CartScreen extends Component {
           </View>
         </ScrollView>
         <Button>Place Order</Button>
+        </SafeAreaView>
       </View>
     );
   }
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:"row",
     justifyContent:"space-between",
+    alignItems:"baseline",
     padding:20
   },
   totalContainer:{

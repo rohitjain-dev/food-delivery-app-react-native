@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList,Image } from "react-native";
 import { Card, Appbar } from "react-native-paper";
 import {DrawerActions} from 'react-navigation'
 
@@ -56,19 +56,14 @@ class MenuScreen extends Component {
           numColumns={2}
           showsVerticalScrollIndicator={false}
           data={this.state.data}
-          keyExtractor={(item, index) => item.title}
-          renderItem={({ item: rowData }) => {
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => {
             return (
               <View style={styles.cardContainer}>
-                <Card
-                  style={{
-                    elevation: 1,
-                    borderColor: "#000",
-                    margin: 10,
-                  }}
-                >
-                  <Card.Cover source={{ uri: rowData.imageUrl }} />
-                </Card>
+              <Image style={styles.imageContainer} source={{uri:item.imageUrl}}/>
+                <View style={styles.shade}>
+                  <Text style={styles.textContainer}>{item.title}</Text>
+                </View>
               </View>
             );
           }}
@@ -85,7 +80,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff"
   },
   cardContainer:{
-    flex:1
+    flex:1,
+    borderRadius:2,
+    borderWidth:1.0,
+    borderColor:"#fafafa",
+    margin:20,
+    height:200,
+    elevation:2
+  },
+  textContainer:{
+    color:"#fafafa",
+    fontSize:20
+  },
+  shade:{
+    backgroundColor:"#000",
+    height:30,
+    opacity:0.2
+  },
+  imageContainer:{
+    flex:3,
   }
 });
 
