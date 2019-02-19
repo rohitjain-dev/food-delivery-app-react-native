@@ -79,13 +79,15 @@ class OrderScreen extends Component {
                 }}>
                     <Card.Title title={rowData.title} />
                     <Card.Cover source={{ uri: rowData.imageUrl }} />
-                    <Card.Content>
-                      <Text>{rowData.price}</Text>
-                      <Text>{rowData.quantity}</Text>
+                    <View style={styles.cardContainer}>
+                    <Card.Content style={styles.cardContent}>
+                      <Text>Total : {rowData.price}</Text>
+                      <Text>Quantity : {rowData.quantity}</Text>
                     </Card.Content>
                     <Card.Actions>
                         <Button mode="outlined">Reorder</Button>
                     </Card.Actions>
+                    </View>
                 </Card>
               );
         }}
@@ -100,6 +102,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff"
+  },
+  cardContainer:{
+    flex:1,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-evenly"
+  },
+  cardContent:{
+    flex:1,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-around"
   }
 });
 
