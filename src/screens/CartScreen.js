@@ -7,7 +7,7 @@ import {DrawerActions} from "react-navigation";
 class CartScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Appbar.Header>
           <Appbar.Action
             icon="menu"
@@ -19,7 +19,7 @@ class CartScreen extends Component {
           <Appbar.Action icon="shopping-cart" />
         </Appbar.Header>
         <SafeAreaView>
-        <ScrollView>
+        <ScrollView style={styles.scrollContainer}>
           <Card>
             <Card.Content style={styles.cardContainer}>
               <Button>+</Button>
@@ -34,7 +34,7 @@ class CartScreen extends Component {
             <Text>$8.5</Text>
           </View>
         </ScrollView>
-        <Button>Place Order</Button>
+        <Button style={styles.orderButton}>Place Order</Button>
         </SafeAreaView>
       </View>
     );
@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
     justifyContent:"space-between",
     padding:20
   },
+  scrollContainer:{
+  },
+  orderButton:{
+  }
 });
 
 //make this component available to the app
