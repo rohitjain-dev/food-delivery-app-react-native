@@ -4,7 +4,10 @@ import { View, StyleSheet } from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {Provider as StoreProvider} from 'react-redux' ;
 import firebase from 'firebase';
+import reducers from './src/reducers';
 import AppNavigator from './src/routing/AppNavigator';
+import {createStore,applyMiddleware} from "redux";
+import  ReduxThunk from 'redux-thunk';
 //screen imports
 
 
@@ -24,13 +27,17 @@ class App extends Component {
     firebase.initializeApp(config);
   }
 
+
   render() {
+    const store = createStore(reducers,{},applyMiddleware(ReduxThunk));
     return (
-      <PaperProvider>
-        <View style={style.container}>
-          <AppNavigator></AppNavigator>
-        </View>
-      </PaperProvider>
+        <StoreProvider store={store}>
+          <PaperProvider>
+            <View style={style.container}>
+              <AppNavigator></AppNavigator>
+            </View>
+          </PaperProvider>
+        </StoreProvider>
     );
   }
 }

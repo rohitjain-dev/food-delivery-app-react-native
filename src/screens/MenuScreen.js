@@ -41,34 +41,34 @@ class MenuScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Appbar.Header>
-          <Appbar.Action
-            icon="menu"
-            onPress={() =>
-              this.props.navigation.dispatch(DrawerActions.toggleDrawer())
-            }
+        <View style={styles.container}>
+          <Appbar.Header>
+            <Appbar.Action
+                icon="menu"
+                onPress={() =>
+                    this.props.navigation.dispatch(DrawerActions.toggleDrawer())
+                }
+            />
+            <Appbar.Content title="Menus" />
+            <Appbar.Action icon="shopping-cart" />
+          </Appbar.Header>
+          <FlatList
+              numColumns={2}
+              showsVerticalScrollIndicator={false}
+              data={this.state.data}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => {
+                return (
+                    <View style={styles.cardContainer}>
+                      <Image style={styles.imageContainer} source={{uri:item.imageUrl}}/>
+                      <View style={styles.shade}>
+                        <Text style={styles.textContainer}>{item.title}</Text>
+                      </View>
+                    </View>
+                );
+              }}
           />
-          <Appbar.Content title="Menus" />
-          <Appbar.Action icon="shopping-cart" />
-        </Appbar.Header>
-        <FlatList
-          numColumns={2}
-          showsVerticalScrollIndicator={false}
-          data={this.state.data}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.cardContainer}>
-              <Image style={styles.imageContainer} source={{uri:item.imageUrl}}/>
-                <View style={styles.shade}>
-                  <Text style={styles.textContainer}>{item.title}</Text>
-                </View>
-              </View>
-            );
-          }}
-        />
-      </View>
+        </View>
     );
   }
 }
