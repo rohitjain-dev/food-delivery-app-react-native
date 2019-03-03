@@ -2,6 +2,7 @@ import {EMAIL_CHANGED, LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, PASSWORD_CHANGED,LOG
 
 import  firebase from 'firebase';
 
+
 export const emailChanged = (text) => {
     return {
         type: EMAIL_CHANGED,
@@ -44,5 +45,6 @@ const loginUserSuccess=(dispatch,user)=>{
     dispatch({
         type:LOGIN_USER_SUCCESS,
         payload:user
-    })
+    });
+
 }

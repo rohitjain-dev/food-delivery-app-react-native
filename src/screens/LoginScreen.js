@@ -7,6 +7,12 @@ import {connect} from 'react-redux';
 // create a component
 class LoginScreen extends Component {
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.loggedIn == true){
+            nextProps.navigation.navigate('Home');
+        }
+    }
+
     onButtonPress(){
         const {email,password} = this.props;
         this.props.loginUser({email,password});
@@ -106,7 +112,8 @@ const mapStateToProps = state => {
         email:state.auth.email,
         password:state.auth.password,
         error:state.auth.error,
-        loading:state.auth.loading
+        loading:state.auth.loading,
+        loggedIn:state.auth.loggedIn
     }
 };
 
